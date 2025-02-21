@@ -1,5 +1,5 @@
 /*
- * *** YOUR NAME GOES HERE / YOUR SECTION NUMBER ***
+ * *** Michael Quiroga / 272-001 ***
  *
  * This java file contains several simple tree problems that need to be
  * codified. These routines  must use the TreeMap and TreeSet library
@@ -21,13 +21,22 @@ public class TreeProblems {
   
   public static Set<Integer> different(Set<Integer> setA, Set<Integer> setB) {
 
+    Set<Integer> result = new TreeSet<>(setA);
+    Set<Integer> intersection = new TreeSet<>(setA);
+
+    // Plan: Fill the result with set b, and strip the elements from set a away.
+
+    intersection.retainAll(setB); // Keep only elements in both sets
+    result.addAll(setB);          // Add all elements from setB
+    result.removeAll(intersection); // Remove common elements
+
     // INSERT CODE HERE - DO NOT FORGET TO PLACE YOUR NAME ABOVE
     //
     // This can be done numerous ways, but once such will only that
     // *several* lines of code. Hint: create two temporary TreeSets and utilize the
     // methods retainAll(), addAll(), and removeAll(). But in the end, get something to work.
 
-    return setA;
+    return result;
   }
 
 
@@ -40,9 +49,18 @@ public class TreeProblems {
 
   public static void removeEven(Map<Integer, String> treeMap) {
 
-    // INSERT CODE HERE.
+    // Plan: create a new arraylist then simply remove evens
+    List<Integer> evenKeys = new ArrayList<>();
 
-    return;
+    for (Integer key : treeMap.keySet()) {
+      if (key % 2 == 0){
+        evenKeys.add(key);
+      }
+    }
+
+    for (Integer key : evenKeys) {
+      treeMap.remove(key);
+    }
   }
 
 
@@ -55,9 +73,9 @@ public class TreeProblems {
 
   public boolean treesEqual(Map<Integer, String> tree1,Map<Integer, String> tree2 ) {
 
-    // INSERT CODE HERE
+    // The .equals() command apparently works for treemaps, making this problem simple
 
-    return false;
+    return tree1.equals(tree2);
 
   }
 
